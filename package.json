@@ -1,0 +1,27 @@
+{
+  "name": "@rotorz/unity3d-zenject-services",
+  "version": "1.0.0",
+  "description": "Service and configuration management for Zenject in Unity games.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rotorz/unity3d-zenject-services"
+  },
+  "author": "Rotorz Limited",
+  "license": "MIT",
+  "keywords": [
+    "unity3d",
+    "unity3d-package"
+  ],
+  "dependencies": {
+    "@rotorz/dotnet-services": "~1.0.0",
+    "@rotorz/dotnet-type-utils": "~1.0.1",
+    "@rotorz/unity3d-generic-menu-extensions": "~1.0.0",
+    "@rotorz/unity3d-reorderable-list": "~1.0.1",
+    "@rotorz/unity3d-utils": "~1.0.0",
+    "zenject": "~5.2.0"
+  }
+}
