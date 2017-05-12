@@ -565,7 +565,7 @@ namespace Rotorz.Games.Services
                 .OrderBy(entry => entry.Descriptor.ServiceType.Name)
                 .GroupBy(service => service.Descriptor.ServiceType.Namespace)
                 .Select(group => new ServiceEntryGroup {
-                    Title = group.Key,
+                    Title = !string.IsNullOrEmpty(group.Key) ? group.Key : "Global Namespace",
                     Entries = group.ToArray()
                 })
                 .OrderBy(group => group.Title, ServiceGroupTitleComparer.Instance)
@@ -659,13 +659,20 @@ namespace Rotorz.Games.Services
 
             public int Compare(string a, string b)
             {
-                // A special case group title that represents services that are specific
-                // to the current project.
-                if (a.StartsWith("Project ")) {
+                // A special case group title for services specific to the project.
+                if (a.StartsWith("Project.")) {
                     return -100000;
                 }
-                if (b.StartsWith("Project ")) {
+                if (b.StartsWith("Project.")) {
                     return +100000;
+                }
+
+                // A special case group title for services in the global namespace.
+                if (a == "Global Namespace") {
+                    return -99999;
+                }
+                if (b == "Global Namespace") {
+                    return +99999;
                 }
 
                 return a.CompareTo(b);
