@@ -11,8 +11,30 @@ namespace Rotorz.Games.UnityEditorExtensions
     /// </summary>
     public sealed class ZenjectServicesEditorStyles : EditorSingletonScriptableObject
     {
+        private static ZenjectServicesEditorStyles s_Instance;
+        private static SkinInfo s_Skin;
+
+
+        /// <summary>
+        /// Gets the one-and-only <see cref="ZenjectServicesEditorStyles"/> instance.
+        /// </summary>
         public static ZenjectServicesEditorStyles Instance {
-            get { return EditorSingletonUtility.GetAssetInstance<ZenjectServicesEditorStyles>(); }
+            get {
+                EditorSingletonUtility.GetAssetInstance<ZenjectServicesEditorStyles>(ref s_Instance);
+                return s_Instance;
+            }
+        }
+
+        /// <summary>
+        /// Gets the current skin.
+        /// </summary>
+        public static SkinInfo Skin {
+            get {
+                if (s_Skin == null) {
+                    s_Skin = EditorGUIUtility.isProSkin ? Instance.darkSkin : Instance.lightSkin;
+                }
+                return s_Skin;
+            }
         }
 
 
@@ -20,14 +42,6 @@ namespace Rotorz.Games.UnityEditorExtensions
         private SkinInfo darkSkin = new SkinInfo();
         [SerializeField]
         private SkinInfo lightSkin = new SkinInfo();
-
-
-        /// <summary>
-        /// Gets the current skin.
-        /// </summary>
-        public SkinInfo Skin {
-            get { return EditorGUIUtility.isProSkin ? this.darkSkin : this.lightSkin; }
-        }
 
 
         public GUIStyle Panel { get; private set; }
@@ -51,7 +65,7 @@ namespace Rotorz.Games.UnityEditorExtensions
 
 
             this.Panel = new GUIStyle();
-            this.Panel.normal.background = this.Skin.Panel;
+            this.Panel.normal.background = Skin.Panel;
             this.Panel.border = new RectOffset(3, 5, 3, 5);
             this.Panel.margin = new RectOffset(3, 2, 3, 3);
             this.Panel.padding = new RectOffset(2, 4, 2, 4);
@@ -72,42 +86,42 @@ namespace Rotorz.Games.UnityEditorExtensions
             this.ActivePill = new GUIStyle();
             this.ActivePill.fixedWidth = 46;
             this.ActivePill.fixedHeight = 23;
-            this.ActivePill.normal.background = this.Skin.ActivePillOff;
-            this.ActivePill.onNormal.background = this.Skin.ActivePillOn;
+            this.ActivePill.normal.background = Skin.ActivePillOff;
+            this.ActivePill.onNormal.background = Skin.ActivePillOn;
 
             this.InstallToggle = new GUIStyle();
             this.InstallToggle.fixedWidth = 21;
             this.InstallToggle.fixedHeight = 22;
-            this.InstallToggle.normal.background = this.Skin.InstallToggleAdd;
-            this.InstallToggle.onNormal.background = this.Skin.InstallToggleRemove;
-            this.InstallToggle.active.background = this.Skin.InstallToggleAddActive;
-            this.InstallToggle.onActive.background = this.Skin.InstallToggleRemoveActive;
+            this.InstallToggle.normal.background = Skin.InstallToggleAdd;
+            this.InstallToggle.onNormal.background = Skin.InstallToggleRemove;
+            this.InstallToggle.active.background = Skin.InstallToggleAddActive;
+            this.InstallToggle.onActive.background = Skin.InstallToggleRemoveActive;
 
             this.InstallManyToggle = new GUIStyle();
             this.InstallManyToggle.fixedWidth = 21;
             this.InstallManyToggle.fixedHeight = 22;
-            this.InstallManyToggle.normal.background = this.Skin.InstallToggleAddMany;
-            this.InstallManyToggle.onNormal.background = this.Skin.InstallToggleRemove;
-            this.InstallManyToggle.active.background = this.Skin.InstallToggleAddManyActive;
-            this.InstallManyToggle.onActive.background = this.Skin.InstallToggleRemoveActive;
+            this.InstallManyToggle.normal.background = Skin.InstallToggleAddMany;
+            this.InstallManyToggle.onNormal.background = Skin.InstallToggleRemove;
+            this.InstallManyToggle.active.background = Skin.InstallToggleAddManyActive;
+            this.InstallManyToggle.onActive.background = Skin.InstallToggleRemoveActive;
 
             this.ProjectUserToggle = new GUIStyle();
             this.ProjectUserToggle.fixedWidth = 21;
             this.ProjectUserToggle.fixedHeight = 22;
-            this.ProjectUserToggle.normal.background = this.Skin.ProjectUserToggle;
-            this.ProjectUserToggle.onNormal.background = this.Skin.ProjectUserToggleOn;
-            this.ProjectUserToggle.active.background = this.Skin.ProjectUserToggleActive;
-            this.ProjectUserToggle.onActive.background = this.Skin.ProjectUserToggleOnActive;
+            this.ProjectUserToggle.normal.background = Skin.ProjectUserToggle;
+            this.ProjectUserToggle.onNormal.background = Skin.ProjectUserToggleOn;
+            this.ProjectUserToggle.active.background = Skin.ProjectUserToggleActive;
+            this.ProjectUserToggle.onActive.background = Skin.ProjectUserToggleOnActive;
 
             this.InspectButton = new GUIStyle();
             this.InspectButton.fixedWidth = 21;
             this.InspectButton.fixedHeight = 22;
-            this.InspectButton.normal.background = this.Skin.Inspect;
-            this.InspectButton.active.background = this.Skin.InspectActive;
+            this.InspectButton.normal.background = Skin.Inspect;
+            this.InspectButton.active.background = Skin.InspectActive;
 
 
             this.InstallerBox = new GUIStyle();
-            this.InstallerBox.normal.background = this.Skin.InstallerBox;
+            this.InstallerBox.normal.background = Skin.InstallerBox;
             this.InstallerBox.normal.textColor = EditorGUIUtility.isProSkin
                 ? new Color32(34, 34, 34, 255)
                 : new Color32(96, 96, 96, 255);
@@ -121,7 +135,7 @@ namespace Rotorz.Games.UnityEditorExtensions
             this.InstallerMenu = new GUIStyle();
             this.InstallerMenu.fixedWidth = 15;
             this.InstallerMenu.fixedHeight = 15;
-            this.InstallerMenu.normal.background = this.Skin.InstallerMenu;
+            this.InstallerMenu.normal.background = Skin.InstallerMenu;
         }
 
 
