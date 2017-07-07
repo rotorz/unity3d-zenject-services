@@ -350,23 +350,24 @@ namespace Rotorz.Games.Services
             }
         }
 
-        private GenericMenu BuildServiceInstallerMenu(ServiceEntry service)
+        private EditorMenu BuildServiceInstallerMenu(ServiceEntry service)
         {
             int distinctInstallerTypeNamespaces = service.AvailableInstallerTypes
                 .Select(type => type.Namespace)
                 .Distinct()
                 .Count();
 
-            var serviceInstallerMenu = new GenericMenu();
+            var serviceInstallerMenu = new EditorMenu();
             foreach (var serviceInstallerType in service.AvailableInstallerTypes) {
                 string installerTitle = distinctInstallerTypeNamespaces > 1
                     ? NicifyNamespaceQualifiedInstallerTitle(serviceInstallerType)
                     : NicifyInstallerTitle(serviceInstallerType);
 
-                serviceInstallerMenu.AddItem(new GUIContent(installerTitle), false, () => {
-                    this.CreateServiceInstaller(serviceInstallerType);
-                    this.SetServiceExpanded(service, true);
-                });
+                serviceInstallerMenu.AddCommand(installerTitle)
+                    .Action(() => {
+                        this.CreateServiceInstaller(serviceInstallerType);
+                        this.SetServiceExpanded(service, true);
+                    });
             }
             return serviceInstallerMenu;
         }
@@ -422,10 +423,10 @@ namespace Rotorz.Games.Services
 
         private void ShowServiceInstallerContextMenu(ZenjectServiceInstaller installer, bool active)
         {
-            var menu = new GenericMenu();
+            var menu = new EditorMenu();
 
-            menu.AddItem("Reset to Default Values")
-                .Enable(active)
+            menu.AddCommand("Reset to Default Values")
+                .Enabled(active)
                 .Action(() => {
                     var serviceInstallerType = installer.GetType();
 
@@ -438,12 +439,12 @@ namespace Rotorz.Games.Services
 
             menu.AddSeparator();
 
-            menu.AddItem("Copy Values")
+            menu.AddCommand("Copy Values")
                 .Action(() => {
                     s_ClipboardReference = installer;
                 });
-            menu.AddItem("Paste Values")
-                .Enable(active && s_ClipboardReference != null && s_ClipboardReference != installer && s_ClipboardReference.GetType().IsAssignableFrom(installer.GetType()))
+            menu.AddCommand("Paste Values")
+                .Enabled(active && s_ClipboardReference != null && s_ClipboardReference != installer && s_ClipboardReference.GetType().IsAssignableFrom(installer.GetType()))
                 .Action(() => {
                     Undo.RecordObject(installer, "Paste Values");
                     EditorUtility.CopySerialized(s_ClipboardReference, installer);
@@ -451,7 +452,7 @@ namespace Rotorz.Games.Services
 
             menu.AddSeparator();
 
-            menu.AddItem("Edit Script")
+            menu.AddCommand("Edit Script")
                 .Action(() => {
                     var script = MonoScript.FromScriptableObject(installer);
                     var assetPath = AssetDatabase.GetAssetPath(script);
