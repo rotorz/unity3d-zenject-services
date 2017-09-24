@@ -1,14 +1,10 @@
 # unity3d-zenject-services
 
-[![npm version](https://badge.fury.io/js/%40rotorz%2Funity3d-zenject-services.svg)](https://badge.fury.io/js/%40rotorz%2Funity3d-zenject-services)
-[![Dependency Status](https://david-dm.org/rotorz/unity3d-zenject-services.svg)](https://david-dm.org/rotorz/unity3d-zenject-services)
-[![devDependency Status](https://david-dm.org/rotorz/unity3d-zenject-services/dev-status.svg)](https://david-dm.org/rotorz/unity3d-zenject-services#info=devDependencies)
-
 Service and configuration management for [Zenject](https://github.com/modesttree/Zenject)
 in Unity games.
 
 ```sh
-$ npm install --save @rotorz/unity3d-zenject-services
+$ npm install --save rotorz/unity3d-zenject-services
 ```
 
 This package is compatible with [unity3d-package-syncer](https://github.com/rotorz/unity3d-package-syncer).
