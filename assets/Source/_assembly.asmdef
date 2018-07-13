@@ -1,0 +1,11 @@
+{
+    "name": "rotorz.unity3d-zenject-services",
+    "references": [
+        "rotorz.dotnet-exception-utils",
+        "rotorz.dotnet-services",
+        "rotorz.dotnet-type-utils",
+        "rotorz.unity3d-reorderable-list",
+        "rotorz.unity3d-utils",
+        "zenject"
+    ]
+}

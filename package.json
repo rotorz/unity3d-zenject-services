@@ -17,12 +17,12 @@
     "unity3d-package"
   ],
   "dependencies": {
-    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.0",
-    "@rotorz/dotnet-services": "github:rotorz/dotnet-services#semver:^1.0.0",
-    "@rotorz/dotnet-type-utils": "github:rotorz/dotnet-type-utils#semver:^1.0.0",
-    "@rotorz/unity3d-editor-menu": "github:rotorz/unity3d-editor-menu#semver:^1.0.0",
-    "@rotorz/unity3d-reorderable-list": "github:rotorz/unity3d-reorderable-list#semver:^1.0.0",
-    "@rotorz/unity3d-utils": "github:rotorz/unity3d-utils#semver:^1.0.0",
-    "zenject": "~5.2.0"
+    "@rotorz/dotnet-exception-utils": "github:rotorz/dotnet-exception-utils#semver:^1.0.3",
+    "@rotorz/dotnet-services": "github:rotorz/dotnet-services#semver:^1.0.2",
+    "@rotorz/dotnet-type-utils": "github:rotorz/dotnet-type-utils#semver:^1.0.2",
+    "@rotorz/unity3d-editor-menu": "github:rotorz/unity3d-editor-menu#semver:^1.0.1",
+    "@rotorz/unity3d-reorderable-list": "github:rotorz/unity3d-reorderable-list#semver:^1.0.2",
+    "@rotorz/unity3d-utils": "github:rotorz/unity3d-utils#semver:^1.0.1",
+    "zenject": "~6.1.1"
   }
 }
