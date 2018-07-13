@@ -10,7 +10,7 @@
         "rotorz.unity3d-reorderable-list.editor",
         "rotorz.unity3d-utils",
         "rotorz.unity3d-utils.editor",
-        "zenject"
+        "Zenject"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [

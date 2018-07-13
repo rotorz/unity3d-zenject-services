@@ -6,6 +6,6 @@
         "rotorz.dotnet-type-utils",
         "rotorz.unity3d-reorderable-list",
         "rotorz.unity3d-utils",
-        "zenject"
+        "Zenject"
     ]
 }
