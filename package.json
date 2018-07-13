@@ -1,6 +1,6 @@
 {
   "name": "@rotorz/unity3d-zenject-services",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Service and configuration management for Zenject in Unity games.",
   "main": "index.js",
   "scripts": {
