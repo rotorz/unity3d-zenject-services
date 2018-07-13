@@ -11,5 +11,11 @@
         "rotorz.unity3d-utils",
         "rotorz.unity3d-utils.editor",
         "zenject"
-    ]
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
 }
